@@ -1,14 +1,21 @@
 <app-home></app-home>
 <h2>Reservation List</h2>
-<ul *ngIf="reservations.length; else noReservation">
-  <li *ngFor="let reservation of reservations">
+<ul class="list-group" *ngIf="reservations.length; else noReservation">
+  <li class="list-group-item" *ngFor="let reservation of reservations">
     Guest:{{ reservation.guestName }}<br />
     Email:{{ reservation.guestEmail }}<br />
     Room No.:{{ reservation.roomNumber }}<br />
     Check-In:{{ reservation.checkInDate }}<br />
     Check-Out:{{ reservation.checkOutDate }}<br />
-    <button (click)="deleteReservation(reservation.id)">Delete</button>
-    <button [routerLink]="['/edit', reservation.id]">Edit</button>
+    <button class="btn btn-danger" (click)="deleteReservation(reservation.id)">
+      Delete
+    </button>
+    <button
+      class="btn btn-secondary mx-2"
+      [routerLink]="['/edit', reservation.id]"
+    >
+      Edit
+    </button>
   </li>
 </ul>
 <ng-template #noReservation>

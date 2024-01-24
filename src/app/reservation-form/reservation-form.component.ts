@@ -26,8 +26,10 @@ export class ReservationFormComponent implements OnInit {
       roomNumber: ['', Validators.required],
     });
     let id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(id);
     if (id) {
       let reservation = this.reservationService.getReservation(id);
+      console.log(reservation);
       if (reservation) {
         this.reservationForm.patchValue(reservation);
       }
